@@ -61,5 +61,13 @@
          </presentation>
       </config>
    </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="net.loerke.itemlist.ui.views.ItemsView"
+            id="net.loerke.itemlist.ui.views.ItemsView"
+            name="Item List">
+      </view>
+   </extension>
 
 </plugin>
