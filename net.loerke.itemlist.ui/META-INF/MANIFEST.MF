@@ -7,6 +7,8 @@ Bundle-Activator: net.loerke.itemlist.ui.Activator
 Bundle-Vendor: ItemList Team
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.ui.intro
+ org.eclipse.ui.intro,
+ org.eclipse.ui.intro.universal;bundle-version="3.2.402",
+ org.eclipse.ui.views;bundle-version="3.5.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy

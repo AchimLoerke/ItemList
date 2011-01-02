@@ -14,7 +14,7 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="RCP Perspective"
+            name="Overview Perspective"
             class="net.loerke.itemlist.ui.intro.Perspective"
             id="net.loerke.itemlist.ui.perspective">
       </perspective>
@@ -64,9 +64,11 @@
    <extension
          point="org.eclipse.ui.views">
       <view
+            category="org.eclipse.ui"
             class="net.loerke.itemlist.ui.views.ItemsView"
             id="net.loerke.itemlist.ui.views.ItemsView"
-            name="Item List">
+            name="Item List"
+            restorable="true">
       </view>
    </extension>
 
