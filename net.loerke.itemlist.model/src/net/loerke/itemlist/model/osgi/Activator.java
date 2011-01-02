@@ -1,4 +1,4 @@
-package net.loerke.itemlist.model;
+package net.loerke.itemlist.model.osgi;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

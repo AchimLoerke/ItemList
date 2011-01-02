@@ -3,8 +3,9 @@ Bundle-ManifestVersion: 2
 Bundle-Name: ItemList Data Model
 Bundle-SymbolicName: net.loerke.itemlist.model
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: net.loerke.itemlist.model.Activator
+Bundle-Activator: net.loerke.itemlist.model.osgi.Activator
 Bundle-Vendor: ItemList Team
-Require-Bundle: org.eclipse.core.runtime
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.persistence.moxy;bundle-version="2.2.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

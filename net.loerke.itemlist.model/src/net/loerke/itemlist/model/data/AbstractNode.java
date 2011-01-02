@@ -8,7 +8,7 @@
  * Contributors:
  *     Achim Loerke - initial API and implementation
  *******************************************************************************/
-package net.loerke.itemlist.model;
+package net.loerke.itemlist.model.data;
 
 import java.util.ArrayList;
 import java.util.Collections;
