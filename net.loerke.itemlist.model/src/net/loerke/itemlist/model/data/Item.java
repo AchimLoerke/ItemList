@@ -10,13 +10,25 @@
  *******************************************************************************/
 package net.loerke.itemlist.model.data;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.eclipse.persistence.oxm.annotations.XmlDiscriminatorValue;
+
 
 /**
  * @author achim
  *
  */
+@XmlRootElement(name="item")
+@XmlDiscriminatorValue("item")
 public class Item extends AbstractNode {
 
+	/**
+	 * needed by persistence API
+	 */
+	public Item() {
+		super();
+	}
 	/**
 	 * @see AbstractNode#AbstractNode(String)
 	 */

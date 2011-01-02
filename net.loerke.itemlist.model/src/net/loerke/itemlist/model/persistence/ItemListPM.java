@@ -13,12 +13,13 @@ package net.loerke.itemlist.model.persistence;
 import java.io.File;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.namespace.QName;
+import javax.xml.bind.Unmarshaller;
 
 import net.loerke.itemlist.model.data.AbstractNode;
+import net.loerke.itemlist.model.data.Category;
+import net.loerke.itemlist.model.data.Item;
 
 /**
  * @author achim
@@ -53,15 +54,25 @@ abstract public class ItemListPM {
 	}
 	public static void persist(AbstractNode root, File storage) throws ItemListPersistenceException {
 		try {
-			JAXBContext context = JAXBContext.newInstance(AbstractNode.class);
+			JAXBContext context = JAXBContext.newInstance(AbstractNode.class, Category.class, Item.class);
 			Marshaller marshaller = context.createMarshaller();
-			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			JAXBElement<AbstractNode> jaxbElement = new JAXBElement<AbstractNode>(
-					new QName(null, "root"), AbstractNode.class, root);
-			marshaller.marshal(jaxbElement, storage);
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);		
+			marshaller.marshal(root, storage);
 		} catch (JAXBException e) {
 			throw new ItemListPersistenceException("Persisting "
 					+ root.toString() + " to file " + storage.toString()
+					+ " failed", e);
+		}
+		
+	}
+	
+	public static Category read(File storage) throws ItemListPersistenceException {
+		try {
+			JAXBContext context = JAXBContext.newInstance(AbstractNode.class, Category.class, Item.class);
+			Unmarshaller unmarshaller = context.createUnmarshaller();
+			return (Category) unmarshaller.unmarshal(storage);
+		} catch (JAXBException e) {
+			throw new ItemListPersistenceException("Reading from file " + storage.toString()
 					+ " failed", e);
 		}
 		

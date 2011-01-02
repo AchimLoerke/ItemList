@@ -10,18 +10,29 @@
  *******************************************************************************/
 package net.loerke.itemlist.model.data;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.eclipse.persistence.oxm.annotations.XmlDiscriminatorValue;
+
 /**
  * @author achim
  *
  */
+@XmlRootElement(name="category")
+@XmlDiscriminatorValue("category")
 public class Category extends AbstractNode {
 
+	/**
+	 * needed by persistence API
+	 */
+	public Category() {
+		super();
+	}
 	/**
 	 * @see AbstractNode#AbstractNode(String)
 	 */
 	public Category(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
 }

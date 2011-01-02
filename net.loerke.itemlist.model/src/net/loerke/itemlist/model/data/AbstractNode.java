@@ -10,30 +10,73 @@
  *******************************************************************************/
 package net.loerke.itemlist.model.data;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
+
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+import org.eclipse.persistence.oxm.annotations.XmlDiscriminatorNode;
 
 /**
  * @author achim
  *
  * Plumbing for a simple tree of nodes
  */
+
+@XmlRootElement(name="equipment")
+@XmlDiscriminatorNode("@nodetype")
+@XmlType(propOrder={"name","id","parent","children"})
 public abstract class AbstractNode {
 	
+	private BigInteger m_id;
+	
 	private String m_name;
+	
 	private List<AbstractNode> m_children;
+	
 	private AbstractNode m_parent;
 
+	/**
+	 * needed by persistence API
+	 */
+	protected AbstractNode() {
+		m_children = new ArrayList<AbstractNode>();
+		UUID id = UUID.randomUUID();
+		m_id = BigInteger.valueOf(id.getMostSignificantBits());
+		m_id.shiftLeft(64);
+		m_id.or(BigInteger.valueOf(id.getLeastSignificantBits()));
+	}
+	
 	/**
 	 * Creates a node.
 	 * @param name The name for this node.
 	 */
 	public AbstractNode(String name) {
-		m_children = new ArrayList<AbstractNode>();
+		this();
 		setName(name);
 	}
 	
+	/**
+	 * @return the id
+	 */
+	@XmlID
+	public BigInteger getId() {
+		return m_id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	@SuppressWarnings("unused")
+	private void setId(BigInteger id) {
+		m_id = id;
+	}
+
 	/**
 	 * Adds a child to this node. The childs parent is set to
 	 * this node.
@@ -52,11 +95,11 @@ public abstract class AbstractNode {
 	
 	/**
 	 * Get the children of this node.
-	 * @return An unmodifiable List containing the children of this
+	 * @return An List containing the children of this
 	 * node is returned.
 	 */
 	public List<AbstractNode> getChildren() {
-		return Collections.unmodifiableList(m_children);
+		return m_children;
 	}
 	
 	/**
@@ -76,6 +119,7 @@ public abstract class AbstractNode {
 	/**
 	 * @return the parent
 	 */
+	@XmlIDREF
 	public AbstractNode getParent() {
 		return m_parent;
 	}
@@ -88,13 +132,21 @@ public abstract class AbstractNode {
 	}
 
 	/**
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "AbstractNode [m_name=" + m_name + "]";
+	}
+
+	/**
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((m_name == null) ? 0 : m_name.hashCode());
+		result = prime * result + ((m_id == null) ? 0 : m_id.hashCode());
 		return result;
 	}
 
@@ -113,11 +165,11 @@ public abstract class AbstractNode {
 			return false;
 		}
 		AbstractNode other = (AbstractNode) obj;
-		if (m_name == null) {
-			if (other.m_name != null) {
+		if (m_id == null) {
+			if (other.m_id != null) {
 				return false;
 			}
-		} else if (!m_name.equals(other.m_name)) {
+		} else if (!m_id.equals(other.m_id)) {
 			return false;
 		}
 		return true;
