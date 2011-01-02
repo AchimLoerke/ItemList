@@ -25,12 +25,17 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.jface.databinding.viewers.ViewersObservables;
+import org.eclipse.core.databinding.beans.PojoObservables;
 
 /**
  * @author achim
  *
  */
 public class ItemsView extends ViewPart {
+	private DataBindingContext m_bindingContext;
 	private static class ViewerLabelProvider extends LabelProvider {
 		public Image getImage(Object element) {
 			return super.getImage(element);
@@ -64,6 +69,7 @@ public class ItemsView extends ViewPart {
 	}
 
 	public static final String ID = "net.loerke.itemlist.ui.views.ItemsView"; //$NON-NLS-1$
+	private TreeViewer m_treeViewer;
 
 	public ItemsView() {
 	}
@@ -77,16 +83,19 @@ public class ItemsView extends ViewPart {
 		Composite container = new Composite(parent, SWT.NONE);
 		container.setLayout(new FillLayout(SWT.HORIZONTAL));
 		{
-			TreeViewer treeViewer = new TreeViewer(container, SWT.BORDER);
-			Tree tree = treeViewer.getTree();
-			treeViewer.setLabelProvider(new ViewerLabelProvider());
-			treeViewer.setContentProvider(new TreeContentProvider());	
-			treeViewer.setInput(Activator.instance().getRoot());
+			m_treeViewer = new TreeViewer(container, SWT.BORDER);
+			m_treeViewer.setAutoExpandLevel(2);
+			Tree tree = m_treeViewer.getTree();
+			m_treeViewer.setLabelProvider(new ViewerLabelProvider());
+			m_treeViewer.setContentProvider(new TreeContentProvider());	
+			m_treeViewer.setInput(Activator.instance().getRoot());
+			getSite().setSelectionProvider(m_treeViewer);
 		}
 
 		createActions();
 		initializeToolBar();
 		initializeMenu();
+		m_bindingContext = initDataBindings();
 	}
 
 	/**
@@ -115,5 +124,10 @@ public class ItemsView extends ViewPart {
 	@Override
 	public void setFocus() {
 		// Set the focus
+	}
+	protected DataBindingContext initDataBindings() {
+		DataBindingContext bindingContext = new DataBindingContext();
+		//
+		return bindingContext;
 	}
 }
