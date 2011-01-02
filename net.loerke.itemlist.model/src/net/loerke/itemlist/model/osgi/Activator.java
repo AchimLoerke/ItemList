@@ -11,7 +11,10 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 public class Activator implements BundleActivator {
+	
+	public final static String BUNDLE_ID = "net.loerke.itemlist.model";
 
+	private static Activator m_instance;
 	private static BundleContext context;
 	private Category m_root;
 	private File m_storage;
@@ -20,12 +23,16 @@ public class Activator implements BundleActivator {
 		return context;
 	}
 
+	public static Activator instance() {
+		return m_instance;
+	}
 	/*
 	 * (non-Javadoc)
 	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
+		Activator.m_instance = this;
 		getDataRoot();
 	}
 

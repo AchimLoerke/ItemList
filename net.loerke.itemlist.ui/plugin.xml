@@ -14,9 +14,10 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="Overview Perspective"
             class="net.loerke.itemlist.ui.intro.Perspective"
-            id="net.loerke.itemlist.ui.perspective">
+            fixed="false"
+            id="net.loerke.itemlist.ui.perspective"
+            name="Overview Perspective">
       </perspective>
    </extension>
    <extension

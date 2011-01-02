@@ -10,21 +10,58 @@
  *******************************************************************************/
 package net.loerke.itemlist.ui.views;
 
+import net.loerke.itemlist.model.data.AbstractNode;
+import net.loerke.itemlist.model.osgi.Activator;
+
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.part.ViewPart;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.widgets.Tree;
+import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.jface.layout.TreeColumnLayout;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.ui.part.ViewPart;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * @author achim
  *
  */
 public class ItemsView extends ViewPart {
+	private static class ViewerLabelProvider extends LabelProvider {
+		public Image getImage(Object element) {
+			return super.getImage(element);
+		}
+		public String getText(Object element) {
+			if (element instanceof AbstractNode) {
+				AbstractNode node = (AbstractNode) element;
+				return node.getName();
+			} else {
+				return super.getText(element);
+			}
+		}
+	}
+	private static class TreeContentProvider implements ITreeContentProvider {
+		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+		}
+		public void dispose() {
+		}
+		public Object[] getElements(Object inputElement) {
+			return ((AbstractNode)inputElement).getChildren().toArray();
+		}
+		public Object[] getChildren(Object parentElement) {
+			return ((AbstractNode)parentElement).getChildren().toArray();
+		}
+		public Object getParent(Object element) {
+			return ((AbstractNode)element).getParent();
+		}
+		public boolean hasChildren(Object element) {
+			return getChildren(element).length > 0;
+		}
+	}
 
 	public static final String ID = "net.loerke.itemlist.ui.views.ItemsView"; //$NON-NLS-1$
 
@@ -40,14 +77,11 @@ public class ItemsView extends ViewPart {
 		Composite container = new Composite(parent, SWT.NONE);
 		container.setLayout(new FillLayout(SWT.HORIZONTAL));
 		{
-			Composite composite = new Composite(container, SWT.NONE);
-			composite.setLayout(new TreeColumnLayout());
-			{
-				TreeViewer treeViewer = new TreeViewer(composite, SWT.BORDER);
-				Tree tree = treeViewer.getTree();
-				tree.setHeaderVisible(true);
-				tree.setLinesVisible(true);
-			}
+			TreeViewer treeViewer = new TreeViewer(container, SWT.BORDER);
+			Tree tree = treeViewer.getTree();
+			treeViewer.setLabelProvider(new ViewerLabelProvider());
+			treeViewer.setContentProvider(new TreeContentProvider());	
+			treeViewer.setInput(Activator.instance().getRoot());
 		}
 
 		createActions();
