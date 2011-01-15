@@ -103,14 +103,5 @@
             commandId="net.loerke.itemlist.ui.menu.testhelper.genxml">
       </handler>
    </extension>
-   <extension
-         point="org.eclipse.ui.propertyPages">
-      <page
-            category="net.loerke.itemlist.ui.views.itemproppage"
-            class="net.loerke.itemlist.ui.views.ItemPropPage"
-            id="net.loerke.itemlist.ui.views.itemproppage"
-            name="Item Properties">
-      </page>
-   </extension>
 
 </plugin>

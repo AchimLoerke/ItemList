@@ -10,25 +10,22 @@
  *******************************************************************************/
 package net.loerke.itemlist.ui.views;
 
-import net.loerke.itemlist.model.data.AbstractNode;
+
 import net.loerke.itemlist.model.osgi.Activator;
 
+import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.part.ViewPart;
-import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.jface.databinding.viewers.ViewersObservables;
-import org.eclipse.core.databinding.beans.PojoObservables;
 
 /**
  * @author achim
@@ -41,27 +38,31 @@ public class ItemsView extends ViewPart {
 			return super.getImage(element);
 		}
 		public String getText(Object element) {
-			if (element instanceof AbstractNode) {
-				AbstractNode node = (AbstractNode) element;
-				return node.getName();
+			if (element instanceof GUINode) {
+				GUINode node = (GUINode) element;
+				return node.getData().getName();
 			} else {
 				return super.getText(element);
 			}
 		}
 	}
 	private static class TreeContentProvider implements ITreeContentProvider {
+		
+		private GUINode m_root;
+		
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+			m_root = (GUINode) newInput;
 		}
 		public void dispose() {
 		}
 		public Object[] getElements(Object inputElement) {
-			return ((AbstractNode)inputElement).getChildren().toArray();
+			return ((GUINode)inputElement).getChildren().toArray();
 		}
 		public Object[] getChildren(Object parentElement) {
-			return ((AbstractNode)parentElement).getChildren().toArray();
+			return ((GUINode)parentElement).getChildren().toArray();
 		}
 		public Object getParent(Object element) {
-			return ((AbstractNode)element).getParent();
+			return ((GUINode)element).getParent();
 		}
 		public boolean hasChildren(Object element) {
 			return getChildren(element).length > 0;
@@ -88,7 +89,7 @@ public class ItemsView extends ViewPart {
 			Tree tree = m_treeViewer.getTree();
 			m_treeViewer.setLabelProvider(new ViewerLabelProvider());
 			m_treeViewer.setContentProvider(new TreeContentProvider());	
-			m_treeViewer.setInput(Activator.instance().getRoot());
+			m_treeViewer.setInput(GUINode.populateTree(Activator.instance().getRoot()));
 			getSite().setSelectionProvider(m_treeViewer);
 		}
 

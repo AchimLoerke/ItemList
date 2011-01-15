@@ -23,6 +23,12 @@ import org.eclipse.persistence.oxm.annotations.XmlDiscriminatorValue;
 @XmlDiscriminatorValue("item")
 public class Item extends AbstractNode {
 
+	/** Bar code for this item. */
+	private String m_barCode;
+	
+	/** set to description if any defect is known, null otherwise */
+	private String m_knownDefect;
+	
 	/**
 	 * needed by persistence API
 	 */
@@ -50,6 +56,30 @@ public class Item extends AbstractNode {
 	@Override
 	public void addChild(AbstractNode newChild) {
 		throw new UnsupportedOperationException("Leaf nodes can't have children");
+	}
+	/**
+	 * @return the barCode
+	 */
+	public String getBarCode() {
+		return m_barCode;
+	}
+	/**
+	 * @param barCode the barCode to set
+	 */
+	public void setBarCode(String barCode) {
+		m_barCode = barCode;
+	}
+	/**
+	 * @return the knownDefect
+	 */
+	public String getKnownDefect() {
+		return m_knownDefect;
+	}
+	/**
+	 * @param knownDefect the knownDefect to set
+	 */
+	public void setKnownDefect(String knownDefect) {
+		m_knownDefect = knownDefect;
 	}
 	
 }
