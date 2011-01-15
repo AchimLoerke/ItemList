@@ -3,8 +3,8 @@ Item List
 
 This program is an Eclipse Rich Client Platform application. 
 It is a special purpose tool for organizing and tracking items 
-use by the Tech-Team at the Lessinggymnasium in 
-Braunschweig-Wenden (www.lg-bs.de).
+used by the Tech-Team at the [Lessinggymnasium in 
+Braunschweig-Wenden] (http://www.lg-bs.de/).
 
 The software is released under the Eclipse Public License Version 1.0
 
