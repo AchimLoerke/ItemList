@@ -46,11 +46,8 @@ public abstract class AbstractNode {
 	 */
 	protected AbstractNode() {
 		m_children = new ArrayList<AbstractNode>();
-		UUID id = UUID.randomUUID();
-		m_id = BigInteger.valueOf(id.getMostSignificantBits());
-		m_id.shiftLeft(64);
-		m_id.or(BigInteger.valueOf(id.getLeastSignificantBits()));
 	}
+
 	
 	/**
 	 * Creates a node.
@@ -58,7 +55,18 @@ public abstract class AbstractNode {
 	 */
 	public AbstractNode(String name) {
 		this();
+		initID();
 		setName(name);
+	}
+
+	/**
+	 * initialize the universal ID for this entity
+	 */
+	private void initID() {
+		UUID id = UUID.randomUUID();
+		m_id = BigInteger.valueOf(id.getMostSignificantBits());
+		m_id.shiftLeft(64);
+		m_id.or(BigInteger.valueOf(id.getLeastSignificantBits()));
 	}
 	
 	/**

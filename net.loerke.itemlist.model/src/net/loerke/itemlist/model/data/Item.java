@@ -29,6 +29,9 @@ public class Item extends AbstractNode {
 	/** set to description if any defect is known, null otherwise */
 	private String m_knownDefect;
 	
+	/** is the item still usable? */
+	private boolean m_usable;
+	
 	/**
 	 * needed by persistence API
 	 */
@@ -40,9 +43,15 @@ public class Item extends AbstractNode {
 	 */
 	public Item(String name) {
 		super(name);
-		
+		init();
 	}
 
+	/**
+	 * initalize this instance
+	 */
+	private void init() {
+		m_usable = true;
+	}
 	/**
 	 * 
 	 * This implementation just throws an {@link UnsupportedOperationException}
@@ -80,6 +89,18 @@ public class Item extends AbstractNode {
 	 */
 	public void setKnownDefect(String knownDefect) {
 		m_knownDefect = knownDefect;
+	}
+	/**
+	 * @return the usable
+	 */
+	public boolean isUsable() {
+		return m_usable;
+	}
+	/**
+	 * @param usable the usable to set
+	 */
+	public void setUsable(boolean usable) {
+		m_usable = usable;
 	}
 	
 }

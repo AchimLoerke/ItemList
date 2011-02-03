@@ -43,7 +43,7 @@ public class Activator implements BundleActivator {
 		m_storage = Platform.getLocation().makeAbsolute().toFile();
 		m_storage = new File(m_storage, "equipment.xml");
 		if (m_storage.isFile() && m_storage.canRead()) {
-			m_root = (Category)ItemListPM.read(m_storage);
+			m_root = ItemListPM.read(m_storage);
 		} else {
 			m_root = new Category("equipment");
 		}
