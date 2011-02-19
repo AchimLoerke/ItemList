@@ -72,6 +72,11 @@
             name="Item List"
             restorable="true">
       </view>
+      <view
+            class="net.loerke.itemlist.ui.views.BoxesView"
+            id="net.loerke.itemlist.ui.views.BoxesView"
+            name="Boxes List">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.menus">

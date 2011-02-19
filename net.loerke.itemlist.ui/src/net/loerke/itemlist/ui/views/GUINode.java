@@ -9,7 +9,7 @@ import net.loerke.itemlist.model.data.Item;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.ui.views.properties.IPropertySource2;
-import org.eclipse.ui.views.properties.TextPropertyDescriptor;
+import org.eclipse.ui.views.properties.PropertyDescriptor;
 
 /**
  * Provide display functions to the {@link AbstractNode} data
@@ -64,10 +64,11 @@ abstract class GUINode implements IPropertySource2 {
 	}
 	
 	protected static final String NAME_ID = "node.name";
-	protected static final TextPropertyDescriptor NAME_PROP_DESC = 
-		new TextPropertyDescriptor(NAME_ID, "Name");
+	protected static final PropertyDescriptor NAME_PROP_DESC = 
+		new PropertyDescriptor(NAME_ID, "Name");
 
 	protected static final String INFO_PROP_CATEGORY = "Information";
+	protected static final String STATE_PROP_CATEGORY = "State";
 	
 	static {
 		NAME_PROP_DESC.setCategory(INFO_PROP_CATEGORY);

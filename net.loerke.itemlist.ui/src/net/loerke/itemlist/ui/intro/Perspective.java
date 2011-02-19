@@ -9,6 +9,7 @@ public class Perspective implements IPerspectiveFactory {
 		addViewShortcuts(layout);
 		addFastViews(layout);
 		layout.addView("net.loerke.itemlist.ui.views.ItemsView", IPageLayout.LEFT, .3f, layout.getEditorArea());
+		layout.addView("net.loerke.itemlist.ui.views.BoxesView", IPageLayout.BOTTOM, 0.5f, "net.loerke.itemlist.ui.views.ItemsView");
 		layout.addView(IPageLayout.ID_PROP_SHEET, IPageLayout.RIGHT, IPageLayout.DEFAULT_VIEW_RATIO, layout.getEditorArea());
 	}
 	private void addFastViews(IPageLayout layout) {

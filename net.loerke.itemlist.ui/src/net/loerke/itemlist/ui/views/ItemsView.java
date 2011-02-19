@@ -16,12 +16,8 @@ import net.loerke.itemlist.model.osgi.Activator;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.jface.viewers.ITreeContentProvider;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
@@ -33,42 +29,6 @@ import org.eclipse.ui.part.ViewPart;
  */
 public class ItemsView extends ViewPart {
 	private DataBindingContext m_bindingContext;
-	private static class ViewerLabelProvider extends LabelProvider {
-		public Image getImage(Object element) {
-			return super.getImage(element);
-		}
-		public String getText(Object element) {
-			if (element instanceof GUINode) {
-				GUINode node = (GUINode) element;
-				return node.getData().getName();
-			} else {
-				return super.getText(element);
-			}
-		}
-	}
-	private static class TreeContentProvider implements ITreeContentProvider {
-		
-		private GUINode m_root;
-		
-		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-			m_root = (GUINode) newInput;
-		}
-		public void dispose() {
-		}
-		public Object[] getElements(Object inputElement) {
-			return ((GUINode)inputElement).getChildren().toArray();
-		}
-		public Object[] getChildren(Object parentElement) {
-			return ((GUINode)parentElement).getChildren().toArray();
-		}
-		public Object getParent(Object element) {
-			return ((GUINode)element).getParent();
-		}
-		public boolean hasChildren(Object element) {
-			return getChildren(element).length > 0;
-		}
-	}
-
 	public static final String ID = "net.loerke.itemlist.ui.views.ItemsView"; //$NON-NLS-1$
 	private TreeViewer m_treeViewer;
 
@@ -87,8 +47,8 @@ public class ItemsView extends ViewPart {
 			m_treeViewer = new TreeViewer(container, SWT.BORDER);
 			m_treeViewer.setAutoExpandLevel(2);
 			Tree tree = m_treeViewer.getTree();
-			m_treeViewer.setLabelProvider(new ViewerLabelProvider());
-			m_treeViewer.setContentProvider(new TreeContentProvider());	
+			m_treeViewer.setLabelProvider(new GUINodeLabelProvider());
+			m_treeViewer.setContentProvider(new GUINodeContentProvider());	
 			m_treeViewer.setInput(GUINode.populateTree(Activator.instance().getRoot()));
 			getSite().setSelectionProvider(m_treeViewer);
 		}
