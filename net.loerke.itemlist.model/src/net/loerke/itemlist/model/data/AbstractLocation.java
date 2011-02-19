@@ -10,10 +10,7 @@
  *******************************************************************************/
 package net.loerke.itemlist.model.data;
 
-import java.math.BigInteger;
-import java.util.UUID;
 
-import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.eclipse.persistence.oxm.annotations.XmlDiscriminatorNode;
@@ -24,11 +21,7 @@ import org.eclipse.persistence.oxm.annotations.XmlDiscriminatorNode;
  */
 @XmlRootElement(name="location")
 @XmlDiscriminatorNode("@locationtype")
-public abstract class AbstractLocation {
-	private BigInteger m_id;
-
-	private String m_name;
-	
+public abstract class AbstractLocation extends AbstractData {
 	/**
 	 * needed by persistence layer
 	 */
@@ -36,48 +29,7 @@ public abstract class AbstractLocation {
 	}
 
 	protected AbstractLocation(String name) {
-		this();
-		initID();
-		setName(name);
+		super(name);
 	}
 	
-	/**
-	 * initialize the universal ID for this entity
-	 */
-	private void initID() {
-		UUID id = UUID.randomUUID();
-		m_id = BigInteger.valueOf(id.getMostSignificantBits());
-		m_id.shiftLeft(64);
-		m_id.or(BigInteger.valueOf(id.getLeastSignificantBits()));
-	}
-	
-	/**
-	 * @return the id
-	 */
-	@XmlID
-	public BigInteger getId() {
-		return m_id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	@SuppressWarnings("unused")
-	private void setId(BigInteger id) {
-		m_id = id;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return m_name;
-	}
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		m_name = name;
-	}
 }

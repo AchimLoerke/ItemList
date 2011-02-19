@@ -12,6 +12,7 @@ package net.loerke.itemlist.model.data;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.persistence.oxm.annotations.XmlDiscriminatorValue;
 
 
@@ -26,7 +27,8 @@ public class Item extends AbstractNode {
 	/** Bar code for this item. */
 	private String m_barCode;
 	
-	/** set to description if any defect is known, null otherwise */
+	/** set to description if any defect is known, null otherwise. An empty description is
+	 * also considered "not defect" */
 	private String m_knownDefect;
 	
 	/** is the item still usable? */
@@ -88,7 +90,10 @@ public class Item extends AbstractNode {
 	 * @param knownDefect the knownDefect to set
 	 */
 	public void setKnownDefect(String knownDefect) {
-		m_knownDefect = knownDefect;
+		m_knownDefect = StringUtils.defaultString(knownDefect.trim());
+		if (m_knownDefect.isEmpty()) {
+			setUsable(true);
+		}
 	}
 	/**
 	 * @return the usable

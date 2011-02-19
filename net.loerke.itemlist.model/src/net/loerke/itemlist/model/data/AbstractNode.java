@@ -10,15 +10,11 @@
  *******************************************************************************/
 package net.loerke.itemlist.model.data;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 import org.eclipse.persistence.oxm.annotations.XmlDiscriminatorNode;
 
@@ -30,14 +26,9 @@ import org.eclipse.persistence.oxm.annotations.XmlDiscriminatorNode;
 
 @XmlRootElement(name="equipment")
 @XmlDiscriminatorNode("@nodetype")
-@XmlType(propOrder={"name","id","parent","children"})
-public abstract class AbstractNode {
-	
-	private BigInteger m_id;
-	
-	private String m_name;
-	
-	private List<AbstractNode> m_children;
+public abstract class AbstractNode extends AbstractData {
+
+	private List<AbstractNode> m_children = new ArrayList<AbstractNode>();
 	
 	private AbstractNode m_parent;
 
@@ -45,7 +36,7 @@ public abstract class AbstractNode {
 	 * needed by persistence API
 	 */
 	protected AbstractNode() {
-		m_children = new ArrayList<AbstractNode>();
+		super();
 	}
 
 	
@@ -54,39 +45,12 @@ public abstract class AbstractNode {
 	 * @param name The name for this node.
 	 */
 	public AbstractNode(String name) {
-		this();
-		initID();
-		setName(name);
-	}
-
-	/**
-	 * initialize the universal ID for this entity
-	 */
-	private void initID() {
-		UUID id = UUID.randomUUID();
-		m_id = BigInteger.valueOf(id.getMostSignificantBits());
-		m_id.shiftLeft(64);
-		m_id.or(BigInteger.valueOf(id.getLeastSignificantBits()));
+		super(name);
 	}
 	
+	
 	/**
-	 * @return the id
-	 */
-	@XmlID
-	public BigInteger getId() {
-		return m_id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	@SuppressWarnings("unused")
-	private void setId(BigInteger id) {
-		m_id = id;
-	}
-
-	/**
-	 * Adds a child to this node. The childs parent is set to
+	 * Adds a child to this node. The child's parent is set to
 	 * this node.
 	 * @param newChild Item to be added
 	 * @throws IllegalArgumentException If newChild is already a
@@ -111,24 +75,10 @@ public abstract class AbstractNode {
 	}
 	
 	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return m_name;
-	}
-	
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		m_name = name;
-	}
-
-	/**
 	 * @return the parent
 	 */
 	@XmlIDREF
-	public AbstractNode getParent() {
+	public AbstractData getParent() {
 		return m_parent;
 	}
 
@@ -137,50 +87,6 @@ public abstract class AbstractNode {
 	 */
 	private void setParent(AbstractNode parent) {
 		m_parent = parent;
-	}
-
-	/**
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "AbstractNode [m_name=" + m_name + "]";
-	}
-
-	/**
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((m_id == null) ? 0 : m_id.hashCode());
-		return result;
-	}
-
-	/**
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof AbstractNode)) {
-			return false;
-		}
-		AbstractNode other = (AbstractNode) obj;
-		if (m_id == null) {
-			if (other.m_id != null) {
-				return false;
-			}
-		} else if (!m_id.equals(other.m_id)) {
-			return false;
-		}
-		return true;
 	}
 	
 }

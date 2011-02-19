@@ -12,4 +12,6 @@
   <artifactId>net.loerke.itemlist.model</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
+  <dependencies>
+  </dependencies>
 </project>

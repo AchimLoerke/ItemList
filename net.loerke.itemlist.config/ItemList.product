@@ -3,6 +3,7 @@
 
 <product name="Item List for Tech-Team" id="net.loerke.itemlist.ui.product" application="net.loerke.itemlist.ui.application" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
 
+
    <configIni use="default">
    </configIni>
 
@@ -20,6 +21,7 @@
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
@@ -48,6 +50,7 @@ Contributors:
       <plugin id="javax.servlet"/>
       <plugin id="javax.servlet.jsp"/>
       <plugin id="javax.transaction"/>
+      <plugin id="javax.xml"/>
       <plugin id="javax.xml.bind"/>
       <plugin id="javax.xml.stream"/>
       <plugin id="net.loerke.itemlist.model"/>

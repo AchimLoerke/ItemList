@@ -17,6 +17,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import net.loerke.itemlist.model.data.AbstractData;
+import net.loerke.itemlist.model.data.AbstractLocation;
 import net.loerke.itemlist.model.data.AbstractNode;
 import net.loerke.itemlist.model.data.Category;
 import net.loerke.itemlist.model.data.Item;
@@ -68,7 +70,7 @@ abstract public class ItemListPM {
 	
 	public static Category read(File storage) throws ItemListPersistenceException {
 		try {
-			JAXBContext context = JAXBContext.newInstance(AbstractNode.class, Category.class, Item.class);
+			JAXBContext context = JAXBContext.newInstance(Category.class, Item.class);
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 			return (Category) unmarshaller.unmarshal(storage);
 		} catch (JAXBException e) {
