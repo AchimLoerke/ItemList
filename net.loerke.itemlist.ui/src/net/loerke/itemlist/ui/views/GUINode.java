@@ -45,7 +45,7 @@ abstract class GUINode implements IPropertySource2 {
 	 */
 	
 	protected GUINode(AbstractNode data, GUINode parent) {
-		Assert.isNotNull(data, "Null data not allowed.");
+		Assert.isNotNull(data, "Null data not allowed."); //$NON-NLS-1$
 		m_data = data;
 		m_parent = parent;
 		List<AbstractNode> dataChildren = m_data.getChildren();
@@ -58,17 +58,17 @@ abstract class GUINode implements IPropertySource2 {
 			if (node instanceof Item) {
 				newNode = new ItemGUINode(node, this);
 			}
-			Assert.isNotNull(newNode, "Internal error: unknown node type found.");
+			Assert.isNotNull(newNode, "Internal error: unknown node type found."); //$NON-NLS-1$
 			m_children.add(newNode);
 		}
 	}
 	
-	protected static final String NAME_ID = "node.name";
+	protected static final String NAME_ID = "node.name"; //$NON-NLS-1$
 	protected static final PropertyDescriptor NAME_PROP_DESC = 
-		new PropertyDescriptor(NAME_ID, "Name");
+		new PropertyDescriptor(NAME_ID, Messages.GUINode_NameLabel);
 
-	protected static final String INFO_PROP_CATEGORY = "Information";
-	protected static final String STATE_PROP_CATEGORY = "State";
+	protected static final String INFO_PROP_CATEGORY = Messages.GUINode_CategoryInfoLabel;
+	protected static final String STATE_PROP_CATEGORY = Messages.GUINode_CategoryStateLabel;
 	
 	static {
 		NAME_PROP_DESC.setCategory(INFO_PROP_CATEGORY);

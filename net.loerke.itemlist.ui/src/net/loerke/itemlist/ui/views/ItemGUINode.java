@@ -25,25 +25,25 @@ import org.eclipse.ui.views.properties.TextPropertyDescriptor;
  */
 public class ItemGUINode extends GUINode {
 
-	private static final String BARCODE_ID = "node.barcode";
+	private static final String BARCODE_ID = "node.barcode"; //$NON-NLS-1$
 	private static final PropertyDescriptor BARCODE_PROP_DESC =
-		new PropertyDescriptor(BARCODE_ID, "Bar code");
-	private static final String DEFAULT_BARCODE = "--";	
+		new PropertyDescriptor(BARCODE_ID, Messages.ItemGUINode_BarcodeLabel);
+	private static final String DEFAULT_BARCODE = Messages.ItemGUINode_BarcodeDefaultString;	
 	static {
 		BARCODE_PROP_DESC.setCategory(INFO_PROP_CATEGORY);
 	}
 
-	private static final String KNOWN_DEFECT_ID ="node.knownDefect";
+	private static final String KNOWN_DEFECT_ID ="node.knownDefect"; //$NON-NLS-1$
 	private static final PropertyDescriptor KNOWN_DEFECT_PROP_DESC =
-		new TextPropertyDescriptor(KNOWN_DEFECT_ID, "Known defect(s)");
+		new TextPropertyDescriptor(KNOWN_DEFECT_ID, Messages.ItemGUINode_KnownDefectsLabel);
 	static {
 		KNOWN_DEFECT_PROP_DESC.setCategory(STATE_PROP_CATEGORY);
 	}
 	
-	private static final String USABLE_ID = "node.usable";
-	private static final String[] USABLE_VALUES = {"Yes", "No"};
+	private static final String USABLE_ID = "node.usable"; //$NON-NLS-1$
+	private static final String[] USABLE_VALUES = {Messages.ItemGUINode_UsableValuesYes, Messages.ItemGUINode_UsableValueNo};
 	private static final PropertyDescriptor USABLE_PROP_DESC =
-		new ComboBoxPropertyDescriptor(USABLE_ID, "Is usable", USABLE_VALUES);
+		new ComboBoxPropertyDescriptor(USABLE_ID, Messages.ItemGUINode_UsableLabel, USABLE_VALUES);
 	static {
 		USABLE_PROP_DESC.setCategory(STATE_PROP_CATEGORY);
 	}
@@ -88,7 +88,7 @@ public class ItemGUINode extends GUINode {
 		}
 		if (KNOWN_DEFECT_ID.equals(id)) {
 			if (getData() instanceof Item) {
-				return StringUtils.defaultIfEmpty(((Item)getData()).getKnownDefect(), "");
+				return StringUtils.defaultIfEmpty(((Item)getData()).getKnownDefect(), ""); //$NON-NLS-1$
 			}
 		}
 		if (USABLE_ID.equals(id)) {
