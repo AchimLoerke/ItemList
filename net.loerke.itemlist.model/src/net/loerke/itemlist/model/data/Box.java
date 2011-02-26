@@ -25,14 +25,14 @@ import org.eclipse.persistence.oxm.annotations.XmlDiscriminatorValue;
 @XmlDiscriminatorValue("box")
 public class Box extends AbstractLocation {
 	
-	private Set<Item> m_contents;
+	private Set<Item> m_content;
 
 	/**
 	 * @see AbstractLocation#AbstractLocation()
 	 */
 	protected Box() {
 		super();
-		m_contents = new HashSet<Item>();
+		m_content = new HashSet<Item>();
 	}
 
 	/**
@@ -43,4 +43,16 @@ public class Box extends AbstractLocation {
 		
 	}
 
+	public Set<Item> getContent() {
+		return m_content;
+	}
+
+	public void addItem(Item item) {
+		m_content.add(item);
+	}
+	
+	public void removeItem(Item item) {
+		m_content.remove(item);
+	}
+	
 }

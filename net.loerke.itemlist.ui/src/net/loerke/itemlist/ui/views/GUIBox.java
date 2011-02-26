@@ -4,8 +4,11 @@
 package net.loerke.itemlist.ui.views;
 
 import java.util.List;
+import java.util.Set;
 
 import net.loerke.itemlist.model.data.AbstractLocation;
+import net.loerke.itemlist.model.data.Box;
+import net.loerke.itemlist.model.data.Item;
 
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource2;
@@ -14,24 +17,20 @@ import org.eclipse.ui.views.properties.IPropertySource2;
  * @author achim
  *
  */
-public class GUILocation implements IPropertySource2 {
+public class GUIBox implements IPropertySource2 {
 
-	private AbstractLocation m_data;
-	private List<GUILocation> m_children;
-	private GUILocation m_parent;
+	private Box m_data;
 	
 	/**
 	 * @param data
 	 * @param parent
 	 */
-	public GUILocation(AbstractLocation data, GUILocation parent) {
+	public GUIBox(Box data) {
 		m_data = data;
-		m_parent = parent;
 	}
 
 	public Object getEditableValue() {
-		// TODO Auto-generated method stub
-		return null;
+		return m_data;
 	}
 
 	public IPropertyDescriptor[] getPropertyDescriptors() {
