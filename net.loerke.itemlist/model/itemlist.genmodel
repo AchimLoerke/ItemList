@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/net.loerke.itemlist/src" modelPluginID="net.loerke.itemlist"
+    modelName="Itemlist" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>itemlist.ecore</foreignModel>
+  <genPackages prefix="Itemlist" basePackage="net.loerke" disposableProviderFactory="true"
+      ecorePackage="itemlist.ecore#/">
+    <genClasses ecoreClass="itemlist.ecore#//Item">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference itemlist.ecore#//Item/is"/>
+    </genClasses>
+    <genClasses ecoreClass="itemlist.ecore#//Box"/>
+    <genClasses ecoreClass="itemlist.ecore#//Room">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference itemlist.ecore#//Room/stores"/>
+    </genClasses>
+    <genClasses ecoreClass="itemlist.ecore#//ItemType"/>
+    <genClasses image="false" ecoreClass="itemlist.ecore#//Location">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference itemlist.ecore#//Location/contains"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

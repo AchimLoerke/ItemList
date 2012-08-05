@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="net.loerke.itemlist.presentation.ItemlistModelWizardID"
+            name="%_UI_ItemlistModelWizard_label"
+            class="net.loerke.itemlist.presentation.ItemlistModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ItemlistModelFile.gif">
+         <description>%_UI_ItemlistModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="net.loerke.itemlist.presentation.ItemlistEditorID"
+            name="%_UI_ItemlistEditor_label"
+            icon="icons/full/obj16/ItemlistModelFile.gif"
+            extensions="itemlist"
+            class="net.loerke.itemlist.presentation.ItemlistEditor"
+            contributorClass="net.loerke.itemlist.presentation.ItemlistActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
