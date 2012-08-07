@@ -83,5 +83,6 @@
 		<module>../net.loerke.itemlist.edit</module>
 		<module>../net.loerke.itemlist.editor</module>
 		<module>../net.loerke.itemlist.tests</module>
+		<module>../net.loerke.itemlist.feature</module>
 	</modules>
 </project>
