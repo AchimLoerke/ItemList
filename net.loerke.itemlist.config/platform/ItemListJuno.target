@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
 
-<target name="ItemListJuno" sequenceNumber="4">
+<target name="ItemListJuno" sequenceNumber="6">
 <locations>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.cdo.sdk.feature.group" version="4.1.0.v20120612-1844"/>
-<unit id="org.eclipse.rcp.sdk.id" version="4.2.0.I20120608-1400"/>
-<unit id="org.eclipse.emf.ecoretools.sdk.feature.group" version="1.1.0.201205150811"/>
-<unit id="org.eclipse.emf.sdk.feature.group" version="2.8.0.v20120608-0554"/>
-<unit id="org.eclipse.equinox.sdk.feature.group" version="3.8.0.v20120522-1841-7M7fA78g5_y-eMftHxcd13UXuq5J"/>
-<unit id="org.eclipse.net4j.sdk.feature.group" version="4.1.0.v20120612-0600"/>
-<unit id="org.eclipse.rtp.package.feature.group" version="1.0.0.v20120613-2107"/>
-<repository location="http://download.eclipse.org/releases/juno"/>
-</location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.junit" version="4.10.0.v4_10_0_v20120426-0900"/>
 <unit id="org.junit.source" version="4.10.0.v4_10_0_v20120426-0900"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.cdo.sdk.feature.group" version="4.1.0.v20120612-1844"/>
+<unit id="org.eclipse.e4.rcp.feature.group" version="1.1.0.v20120521-2329-8yFTIGF3GGduEYqkQB9M3DKn"/>
+<unit id="org.eclipse.e4.rcp.source.feature.group" version="1.1.0.v20120521-2329-8yFTIGF3GGduEYqkQB9M3DKn"/>
+<unit id="org.eclipse.rcp.sdk.id" version="4.2.0.I20120608-1400"/>
+<unit id="org.eclipse.emf.ecoretools.sdk.feature.group" version="1.1.0.201205150811"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.8.0.v20120608-0554"/>
+<unit id="org.eclipse.epp.package.common.feature.feature.group" version="1.5.0.20120202-1420"/>
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.8.0.v20120522-1841-7M7fA78g5_y-eMftHxcd13UXuq5J"/>
+<unit id="org.eclipse.net4j.sdk.feature.group" version="4.1.0.v20120612-0600"/>
+<unit id="org.eclipse.rtp.package.feature.group" version="1.0.0.v20120613-2107"/>
+<repository location="http://download.eclipse.org/releases/juno"/>
 </location>
 </locations>
 </target>

@@ -2,11 +2,7 @@
 <feature
       id="net.loerke.itemlist.feature"
       label="ItemList Feature"
-      version="1.0.0.qualifier"
-      os="linux,macosx,win32"
-      ws="cocoa,gtk,win32"
-      nl="de_DE,en"
-      arch="x86,x86_64">
+      version="1.0.0.qualifier">
 
    <description url="https://github.com/AchimLoerke/ItemList">
       Plug-ins composing the ItemList application for Lessinggymnasium

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Item List
+Bundle-SymbolicName: net.loerke.itemlist.product; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: net.loerke.itemlist.product.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.intro,
+ net.loerke.itemlist;bundle-version="1.0.0",
+ net.loerke.itemlist.edit;bundle-version="1.0.0",
+ net.loerke.itemlist.editor;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/net.loerke.itemlist.feature_1.0.0.qualifier.jar" id="net.loerke.itemlist.feature" version="1.0.0.qualifier" os="linux,macosx,win32" ws="cocoa,gtk,win32" nl="de_DE,en" arch="x86,x86_64">
+      <category name="net.loerke.itemlist.p2.category"/>
+   </feature>
+   <category-def name="net.loerke.itemlist.p2.category" label="Item List"/>
+</site>

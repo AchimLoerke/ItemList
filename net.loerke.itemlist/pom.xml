@@ -7,6 +7,6 @@
   	<relativePath>../net.loerke.itemlist.config</relativePath>
   </parent>
   <artifactId>net.loerke.itemlist</artifactId>
-  <version>1.0.0.qualifier</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>

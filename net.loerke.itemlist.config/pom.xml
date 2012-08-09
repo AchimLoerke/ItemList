@@ -76,6 +76,20 @@
 					</environments>
 				</configuration>
 			</plugin>
+			<!-- enable source bundle generation -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<modules>
@@ -84,5 +98,7 @@
 		<module>../net.loerke.itemlist.editor</module>
 		<module>../net.loerke.itemlist.tests</module>
 		<module>../net.loerke.itemlist.feature</module>
+		<module>../net.loerke.itemlist.p2</module>
+		<module>../net.loerke.itemlist.product</module>
 	</modules>
 </project>
