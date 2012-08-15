@@ -13,7 +13,7 @@ import net.loerke.itemlist.ItemlistFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class BoxTest extends LocationTest {
+public class BoxTest extends StorageTest {
 
 	/**
 	 * <!-- begin-user-doc -->

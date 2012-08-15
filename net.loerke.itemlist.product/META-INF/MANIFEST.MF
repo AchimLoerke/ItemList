@@ -11,4 +11,6 @@ Require-Bundle: org.eclipse.ui,
  net.loerke.itemlist.edit;bundle-version="1.0.0",
  net.loerke.itemlist.editor;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: bin/,
+ .

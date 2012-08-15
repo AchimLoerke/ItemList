@@ -7,7 +7,15 @@
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../net.loerke.itemlist.config</relativePath>
 	</parent>
-	<artifactId>net.loerke.itemlist.p2</artifactId>
+	<artifactId>net.loerke.itemlist.libs</artifactId>
 	<version>1.0.0.qualifier</version>
-	<packaging>eclipse-repository</packaging>
+	<packaging>eclipse-plugin</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>13.0-rc1</version>
+			<classifier>site</classifier>
+		</dependency>
+	</dependencies>
 </project>

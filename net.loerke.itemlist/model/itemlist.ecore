@@ -4,13 +4,18 @@
   <eClassifiers xsi:type="ecore:EClass" name="Item">
     <eStructuralFeatures xsi:type="ecore:EReference" name="is" lowerBound="1" eType="#//ItemType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Box" eSuperTypes="#//Location"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Room" eSuperTypes="#//Location">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stores" upperBound="-1"
+  <eClassifiers xsi:type="ecore:EClass" name="Box" eSuperTypes="#//Storage">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Color" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Room" eSuperTypes="#//Storage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boxes" upperBound="-1"
         eType="#//Box"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ItemType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Location" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="ItemType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Storage" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="contains" eType="#//Item"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

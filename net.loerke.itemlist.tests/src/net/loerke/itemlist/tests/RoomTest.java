@@ -13,7 +13,7 @@ import net.loerke.itemlist.Room;
  * <!-- end-user-doc -->
  * @generated
  */
-public class RoomTest extends LocationTest {
+public class RoomTest extends StorageTest {
 
 	/**
 	 * <!-- begin-user-doc -->

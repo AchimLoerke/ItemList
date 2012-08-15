@@ -84,8 +84,8 @@ public class ItemlistAdapterFactory extends AdapterFactoryImpl {
 				return createItemTypeAdapter();
 			}
 			@Override
-			public Adapter caseLocation(Location object) {
-				return createLocationAdapter();
+			public Adapter caseStorage(Storage object) {
+				return createStorageAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -164,16 +164,16 @@ public class ItemlistAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link net.loerke.itemlist.Location <em>Location</em>}'.
+	 * Creates a new adapter for an object of class '{@link net.loerke.itemlist.Storage <em>Storage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see net.loerke.itemlist.Location
+	 * @see net.loerke.itemlist.Storage
 	 * @generated
 	 */
-	public Adapter createLocationAdapter() {
+	public Adapter createStorageAdapter() {
 		return null;
 	}
 

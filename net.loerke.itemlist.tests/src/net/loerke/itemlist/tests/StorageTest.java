@@ -4,52 +4,52 @@ package net.loerke.itemlist.tests;
 
 import junit.framework.TestCase;
 
-import net.loerke.itemlist.Location;
+import net.loerke.itemlist.Storage;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Location</b></em>'.
+ * A test case for the model object '<em><b>Storage</b></em>'.
  * <!-- end-user-doc -->
  * @generated
  */
-public abstract class LocationTest extends TestCase {
+public abstract class StorageTest extends TestCase {
 
 	/**
-	 * The fixture for this Location test case.
+	 * The fixture for this Storage test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Location fixture = null;
+	protected Storage fixture = null;
 
 	/**
-	 * Constructs a new Location test case with the given name.
+	 * Constructs a new Storage test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LocationTest(String name) {
+	public StorageTest(String name) {
 		super(name);
 	}
 
 	/**
-	 * Sets the fixture for this Location test case.
+	 * Sets the fixture for this Storage test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void setFixture(Location fixture) {
+	protected void setFixture(Storage fixture) {
 		this.fixture = fixture;
 	}
 
 	/**
-	 * Returns the fixture for this Location test case.
+	 * Returns the fixture for this Storage test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Location getFixture() {
+	protected Storage getFixture() {
 		return fixture;
 	}
 
-} //LocationTest
+} //StorageTest

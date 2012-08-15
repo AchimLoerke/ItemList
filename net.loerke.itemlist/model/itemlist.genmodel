@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/net.loerke.itemlist/src" modelPluginID="net.loerke.itemlist"
-    modelName="Itemlist" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    modelName="Itemlist" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
     copyrightFields="false">
   <foreignModel>itemlist.ecore</foreignModel>
   <genPackages prefix="Itemlist" basePackage="net.loerke" disposableProviderFactory="true"
@@ -13,9 +13,12 @@
     <genClasses ecoreClass="itemlist.ecore#//Room">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference itemlist.ecore#//Room/stores"/>
     </genClasses>
-    <genClasses ecoreClass="itemlist.ecore#//ItemType"/>
-    <genClasses image="false" ecoreClass="itemlist.ecore#//Location">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference itemlist.ecore#//Location/contains"/>
+    <genClasses ecoreClass="itemlist.ecore#//ItemType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute itemlist.ecore#//ItemType/Name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="itemlist.ecore#//Storage">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference itemlist.ecore#//Storage/contains"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute itemlist.ecore#//Storage/Name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

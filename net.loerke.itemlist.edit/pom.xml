@@ -8,6 +8,6 @@
 		<artifactId>net.loerke.itemlist.config</artifactId>
 	</parent>
 	<artifactId>net.loerke.itemlist.edit</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0.qualifier</version>
 	<packaging>eclipse-plugin</packaging>
 </project>

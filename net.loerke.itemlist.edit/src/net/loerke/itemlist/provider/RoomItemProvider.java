@@ -8,6 +8,7 @@ import java.util.List;
 
 import net.loerke.itemlist.ItemlistPackage;
 
+import net.loerke.itemlist.Room;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -26,7 +27,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * @generated
  */
 public class RoomItemProvider
-	extends LocationItemProvider
+	extends StorageItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -54,25 +55,25 @@ public class RoomItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addStoresPropertyDescriptor(object);
+			addBoxesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Stores feature.
+	 * This adds a property descriptor for the Boxes feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addStoresPropertyDescriptor(Object object) {
+	protected void addBoxesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Room_stores_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Room_stores_feature", "_UI_Room_type"),
-				 ItemlistPackage.Literals.ROOM__STORES,
+				 getString("_UI_Room_boxes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Room_boxes_feature", "_UI_Room_type"),
+				 ItemlistPackage.Literals.ROOM__BOXES,
 				 true,
 				 false,
 				 true,
@@ -100,7 +101,10 @@ public class RoomItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Room_type");
+		String label = ((Room)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Room_type") :
+			getString("_UI_Room_type") + " " + label;
 	}
 
 	/**

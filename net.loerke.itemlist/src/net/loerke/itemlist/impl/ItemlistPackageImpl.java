@@ -7,13 +7,13 @@ import net.loerke.itemlist.Item;
 import net.loerke.itemlist.ItemType;
 import net.loerke.itemlist.ItemlistFactory;
 import net.loerke.itemlist.ItemlistPackage;
-import net.loerke.itemlist.Location;
 import net.loerke.itemlist.Room;
+import net.loerke.itemlist.Storage;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -56,7 +56,7 @@ public class ItemlistPackageImpl extends EPackageImpl implements ItemlistPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass locationEClass = null;
+	private EClass storageEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -151,6 +151,15 @@ public class ItemlistPackageImpl extends EPackageImpl implements ItemlistPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getBox_Color() {
+		return (EAttribute)boxEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRoom() {
 		return roomEClass;
 	}
@@ -160,7 +169,7 @@ public class ItemlistPackageImpl extends EPackageImpl implements ItemlistPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRoom_Stores() {
+	public EReference getRoom_Boxes() {
 		return (EReference)roomEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -178,8 +187,8 @@ public class ItemlistPackageImpl extends EPackageImpl implements ItemlistPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getLocation() {
-		return locationEClass;
+	public EAttribute getItemType_Name() {
+		return (EAttribute)itemTypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -187,8 +196,26 @@ public class ItemlistPackageImpl extends EPackageImpl implements ItemlistPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLocation_Contains() {
-		return (EReference)locationEClass.getEStructuralFeatures().get(0);
+	public EClass getStorage() {
+		return storageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStorage_Contains() {
+		return (EReference)storageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStorage_Name() {
+		return (EAttribute)storageEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -223,14 +250,17 @@ public class ItemlistPackageImpl extends EPackageImpl implements ItemlistPackage
 		createEReference(itemEClass, ITEM__IS);
 
 		boxEClass = createEClass(BOX);
+		createEAttribute(boxEClass, BOX__COLOR);
 
 		roomEClass = createEClass(ROOM);
-		createEReference(roomEClass, ROOM__STORES);
+		createEReference(roomEClass, ROOM__BOXES);
 
 		itemTypeEClass = createEClass(ITEM_TYPE);
+		createEAttribute(itemTypeEClass, ITEM_TYPE__NAME);
 
-		locationEClass = createEClass(LOCATION);
-		createEReference(locationEClass, LOCATION__CONTAINS);
+		storageEClass = createEClass(STORAGE);
+		createEReference(storageEClass, STORAGE__CONTAINS);
+		createEAttribute(storageEClass, STORAGE__NAME);
 	}
 
 	/**
@@ -261,22 +291,25 @@ public class ItemlistPackageImpl extends EPackageImpl implements ItemlistPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		boxEClass.getESuperTypes().add(this.getLocation());
-		roomEClass.getESuperTypes().add(this.getLocation());
+		boxEClass.getESuperTypes().add(this.getStorage());
+		roomEClass.getESuperTypes().add(this.getStorage());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(itemEClass, Item.class, "Item", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getItem_Is(), this.getItemType(), null, "is", null, 1, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(boxEClass, Box.class, "Box", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBox_Color(), ecorePackage.getEString(), "Color", null, 0, 1, Box.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(roomEClass, Room.class, "Room", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRoom_Stores(), this.getBox(), null, "stores", null, 0, -1, Room.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRoom_Boxes(), this.getBox(), null, "boxes", null, 0, -1, Room.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(itemTypeEClass, ItemType.class, "ItemType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getItemType_Name(), ecorePackage.getEString(), "Name", null, 1, 1, ItemType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(locationEClass, Location.class, "Location", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLocation_Contains(), this.getItem(), null, "contains", null, 0, 1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(storageEClass, Storage.class, "Storage", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStorage_Contains(), this.getItem(), null, "contains", null, 0, 1, Storage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStorage_Name(), ecorePackage.getEString(), "Name", null, 1, 1, Storage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

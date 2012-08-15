@@ -21,23 +21,22 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link net.loerke.itemlist.impl.RoomImpl#getStores <em>Stores</em>}</li>
+ *   <li>{@link net.loerke.itemlist.impl.RoomImpl#getBoxes <em>Boxes</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class RoomImpl extends LocationImpl implements Room {
+public class RoomImpl extends StorageImpl implements Room {
 	/**
-	 * The cached value of the '{@link #getStores() <em>Stores</em>}' reference list.
+	 * The cached value of the '{@link #getBoxes() <em>Boxes</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStores()
+	 * @see #getBoxes()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Box> stores;
-
+	protected EList<Box> boxes;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,11 +61,11 @@ public class RoomImpl extends LocationImpl implements Room {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Box> getStores() {
-		if (stores == null) {
-			stores = new EObjectResolvingEList<Box>(Box.class, this, ItemlistPackage.ROOM__STORES);
+	public EList<Box> getBoxes() {
+		if (boxes == null) {
+			boxes = new EObjectResolvingEList<Box>(Box.class, this, ItemlistPackage.ROOM__BOXES);
 		}
-		return stores;
+		return boxes;
 	}
 
 	/**
@@ -77,8 +76,8 @@ public class RoomImpl extends LocationImpl implements Room {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ItemlistPackage.ROOM__STORES:
-				return getStores();
+			case ItemlistPackage.ROOM__BOXES:
+				return getBoxes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -92,9 +91,9 @@ public class RoomImpl extends LocationImpl implements Room {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ItemlistPackage.ROOM__STORES:
-				getStores().clear();
-				getStores().addAll((Collection<? extends Box>)newValue);
+			case ItemlistPackage.ROOM__BOXES:
+				getBoxes().clear();
+				getBoxes().addAll((Collection<? extends Box>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -108,8 +107,8 @@ public class RoomImpl extends LocationImpl implements Room {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ItemlistPackage.ROOM__STORES:
-				getStores().clear();
+			case ItemlistPackage.ROOM__BOXES:
+				getBoxes().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -123,8 +122,8 @@ public class RoomImpl extends LocationImpl implements Room {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ItemlistPackage.ROOM__STORES:
-				return stores != null && !stores.isEmpty();
+			case ItemlistPackage.ROOM__BOXES:
+				return boxes != null && !boxes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

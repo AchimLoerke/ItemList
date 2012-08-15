@@ -12,7 +12,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link net.loerke.itemlist.Room#getStores <em>Stores</em>}</li>
+ *   <li>{@link net.loerke.itemlist.Room#getBoxes <em>Boxes</em>}</li>
  * </ul>
  * </p>
  *
@@ -20,21 +20,21 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Room extends Location {
+public interface Room extends Storage {
 	/**
-	 * Returns the value of the '<em><b>Stores</b></em>' reference list.
+	 * Returns the value of the '<em><b>Boxes</b></em>' reference list.
 	 * The list contents are of type {@link net.loerke.itemlist.Box}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Stores</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Boxes</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Stores</em>' reference list.
-	 * @see net.loerke.itemlist.ItemlistPackage#getRoom_Stores()
+	 * @return the value of the '<em>Boxes</em>' reference list.
+	 * @see net.loerke.itemlist.ItemlistPackage#getRoom_Boxes()
 	 * @model
 	 * @generated
 	 */
-	EList<Box> getStores();
+	EList<Box> getBoxes();
 
 } // Room

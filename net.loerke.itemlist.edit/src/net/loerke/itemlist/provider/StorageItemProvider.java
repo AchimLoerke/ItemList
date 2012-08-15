@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 import net.loerke.itemlist.ItemlistPackage;
+import net.loerke.itemlist.Storage;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -20,15 +21,17 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link net.loerke.itemlist.Location} object.
+ * This is the item provider adapter for a {@link net.loerke.itemlist.Storage} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class LocationItemProvider
+public class StorageItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -42,7 +45,7 @@ public class LocationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LocationItemProvider(AdapterFactory adapterFactory) {
+	public StorageItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -58,6 +61,7 @@ public class LocationItemProvider
 			super.getPropertyDescriptors(object);
 
 			addContainsPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -73,13 +77,35 @@ public class LocationItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Location_contains_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Location_contains_feature", "_UI_Location_type"),
-				 ItemlistPackage.Literals.LOCATION__CONTAINS,
+				 getString("_UI_Storage_contains_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Storage_contains_feature", "_UI_Storage_type"),
+				 ItemlistPackage.Literals.STORAGE__CONTAINS,
 				 true,
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Storage_Name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Storage_Name_feature", "_UI_Storage_type"),
+				 ItemlistPackage.Literals.STORAGE__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -92,7 +118,10 @@ public class LocationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Location_type");
+		String label = ((Storage)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Storage_type") :
+			getString("_UI_Storage_type") + " " + label;
 	}
 
 	/**
@@ -105,6 +134,12 @@ public class LocationItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Storage.class)) {
+			case ItemlistPackage.STORAGE__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

@@ -2,6 +2,7 @@
  */
 package net.loerke.itemlist;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -83,14 +84,14 @@ public interface ItemlistPackage extends EPackage {
 	int ITEM_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link net.loerke.itemlist.impl.LocationImpl <em>Location</em>}' class.
+	 * The meta object id for the '{@link net.loerke.itemlist.impl.StorageImpl <em>Storage</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see net.loerke.itemlist.impl.LocationImpl
-	 * @see net.loerke.itemlist.impl.ItemlistPackageImpl#getLocation()
+	 * @see net.loerke.itemlist.impl.StorageImpl
+	 * @see net.loerke.itemlist.impl.ItemlistPackageImpl#getStorage()
 	 * @generated
 	 */
-	int LOCATION = 4;
+	int STORAGE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Contains</b></em>' reference.
@@ -99,16 +100,25 @@ public interface ItemlistPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LOCATION__CONTAINS = 0;
+	int STORAGE__CONTAINS = 0;
 
 	/**
-	 * The number of structural features of the '<em>Location</em>' class.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCATION_FEATURE_COUNT = 1;
+	int STORAGE__NAME = 1;
+
+	/**
+	 * The number of structural features of the '<em>Storage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link net.loerke.itemlist.impl.BoxImpl <em>Box</em>}' class.
@@ -127,7 +137,25 @@ public interface ItemlistPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOX__CONTAINS = LOCATION__CONTAINS;
+	int BOX__CONTAINS = STORAGE__CONTAINS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOX__NAME = STORAGE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOX__COLOR = STORAGE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Box</em>' class.
@@ -136,7 +164,7 @@ public interface ItemlistPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOX_FEATURE_COUNT = LOCATION_FEATURE_COUNT + 0;
+	int BOX_FEATURE_COUNT = STORAGE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link net.loerke.itemlist.impl.RoomImpl <em>Room</em>}' class.
@@ -155,16 +183,25 @@ public interface ItemlistPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ROOM__CONTAINS = LOCATION__CONTAINS;
+	int ROOM__CONTAINS = STORAGE__CONTAINS;
 
 	/**
-	 * The feature id for the '<em><b>Stores</b></em>' reference list.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROOM__STORES = LOCATION_FEATURE_COUNT + 0;
+	int ROOM__NAME = STORAGE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Boxes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOM__BOXES = STORAGE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Room</em>' class.
@@ -173,7 +210,7 @@ public interface ItemlistPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ROOM_FEATURE_COUNT = LOCATION_FEATURE_COUNT + 1;
+	int ROOM_FEATURE_COUNT = STORAGE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link net.loerke.itemlist.impl.ItemTypeImpl <em>Item Type</em>}' class.
@@ -186,13 +223,22 @@ public interface ItemlistPackage extends EPackage {
 	int ITEM_TYPE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM_TYPE__NAME = 0;
+
+	/**
 	 * The number of structural features of the '<em>Item Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM_TYPE_FEATURE_COUNT = 0;
+	int ITEM_TYPE_FEATURE_COUNT = 1;
 
 
 	/**
@@ -227,6 +273,17 @@ public interface ItemlistPackage extends EPackage {
 	EClass getBox();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.loerke.itemlist.Box#getColor <em>Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Color</em>'.
+	 * @see net.loerke.itemlist.Box#getColor()
+	 * @see #getBox()
+	 * @generated
+	 */
+	EAttribute getBox_Color();
+
+	/**
 	 * Returns the meta object for class '{@link net.loerke.itemlist.Room <em>Room</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -237,15 +294,15 @@ public interface ItemlistPackage extends EPackage {
 	EClass getRoom();
 
 	/**
-	 * Returns the meta object for the reference list '{@link net.loerke.itemlist.Room#getStores <em>Stores</em>}'.
+	 * Returns the meta object for the reference list '{@link net.loerke.itemlist.Room#getBoxes <em>Boxes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Stores</em>'.
-	 * @see net.loerke.itemlist.Room#getStores()
+	 * @return the meta object for the reference list '<em>Boxes</em>'.
+	 * @see net.loerke.itemlist.Room#getBoxes()
 	 * @see #getRoom()
 	 * @generated
 	 */
-	EReference getRoom_Stores();
+	EReference getRoom_Boxes();
 
 	/**
 	 * Returns the meta object for class '{@link net.loerke.itemlist.ItemType <em>Item Type</em>}'.
@@ -258,25 +315,47 @@ public interface ItemlistPackage extends EPackage {
 	EClass getItemType();
 
 	/**
-	 * Returns the meta object for class '{@link net.loerke.itemlist.Location <em>Location</em>}'.
+	 * Returns the meta object for the attribute '{@link net.loerke.itemlist.ItemType#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Location</em>'.
-	 * @see net.loerke.itemlist.Location
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see net.loerke.itemlist.ItemType#getName()
+	 * @see #getItemType()
 	 * @generated
 	 */
-	EClass getLocation();
+	EAttribute getItemType_Name();
 
 	/**
-	 * Returns the meta object for the reference '{@link net.loerke.itemlist.Location#getContains <em>Contains</em>}'.
+	 * Returns the meta object for class '{@link net.loerke.itemlist.Storage <em>Storage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Storage</em>'.
+	 * @see net.loerke.itemlist.Storage
+	 * @generated
+	 */
+	EClass getStorage();
+
+	/**
+	 * Returns the meta object for the reference '{@link net.loerke.itemlist.Storage#getContains <em>Contains</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Contains</em>'.
-	 * @see net.loerke.itemlist.Location#getContains()
-	 * @see #getLocation()
+	 * @see net.loerke.itemlist.Storage#getContains()
+	 * @see #getStorage()
 	 * @generated
 	 */
-	EReference getLocation_Contains();
+	EReference getStorage_Contains();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.loerke.itemlist.Storage#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see net.loerke.itemlist.Storage#getName()
+	 * @see #getStorage()
+	 * @generated
+	 */
+	EAttribute getStorage_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -329,6 +408,14 @@ public interface ItemlistPackage extends EPackage {
 		EClass BOX = eINSTANCE.getBox();
 
 		/**
+		 * The meta object literal for the '<em><b>Color</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOX__COLOR = eINSTANCE.getBox_Color();
+
+		/**
 		 * The meta object literal for the '{@link net.loerke.itemlist.impl.RoomImpl <em>Room</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -339,12 +426,12 @@ public interface ItemlistPackage extends EPackage {
 		EClass ROOM = eINSTANCE.getRoom();
 
 		/**
-		 * The meta object literal for the '<em><b>Stores</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Boxes</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ROOM__STORES = eINSTANCE.getRoom_Stores();
+		EReference ROOM__BOXES = eINSTANCE.getRoom_Boxes();
 
 		/**
 		 * The meta object literal for the '{@link net.loerke.itemlist.impl.ItemTypeImpl <em>Item Type</em>}' class.
@@ -357,14 +444,22 @@ public interface ItemlistPackage extends EPackage {
 		EClass ITEM_TYPE = eINSTANCE.getItemType();
 
 		/**
-		 * The meta object literal for the '{@link net.loerke.itemlist.impl.LocationImpl <em>Location</em>}' class.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see net.loerke.itemlist.impl.LocationImpl
-		 * @see net.loerke.itemlist.impl.ItemlistPackageImpl#getLocation()
 		 * @generated
 		 */
-		EClass LOCATION = eINSTANCE.getLocation();
+		EAttribute ITEM_TYPE__NAME = eINSTANCE.getItemType_Name();
+
+		/**
+		 * The meta object literal for the '{@link net.loerke.itemlist.impl.StorageImpl <em>Storage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.loerke.itemlist.impl.StorageImpl
+		 * @see net.loerke.itemlist.impl.ItemlistPackageImpl#getStorage()
+		 * @generated
+		 */
+		EClass STORAGE = eINSTANCE.getStorage();
 
 		/**
 		 * The meta object literal for the '<em><b>Contains</b></em>' reference feature.
@@ -372,7 +467,15 @@ public interface ItemlistPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LOCATION__CONTAINS = eINSTANCE.getLocation_Contains();
+		EReference STORAGE__CONTAINS = eINSTANCE.getStorage_Contains();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STORAGE__NAME = eINSTANCE.getStorage_Name();
 
 	}
 
