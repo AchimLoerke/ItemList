@@ -10,6 +10,7 @@
 	<properties>
 		<tycho-version>0.16.0</tycho-version>
 		<javaVersion>1.7</javaVersion>
+		 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 

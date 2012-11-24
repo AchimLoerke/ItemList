@@ -7,7 +7,6 @@
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../net.loerke.itemlist.config</relativePath>
 	</parent>
-	<groupId>net.loerke.itemlist</groupId>
 	<artifactId>net.loerke.itemlist.feature</artifactId>
 	<version>1.0.0.qualifier</version>
 	<packaging>eclipse-feature</packaging>
